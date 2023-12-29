@@ -1,0 +1,93 @@
+repos:
+  - repo: local
+    hooks:
+      - id: parser_isort
+        name: parser isort
+        entry: bash -c "cd tlparser && poetry run isort --check-only ."
+        language: system
+        types: [python]
+        pass_filenames: false
+
+      - id: parser_black
+        name: parser black
+        entry: bash -c "cd tlparser && poetry run black --check ."
+        language: system
+        types: [python]
+        pass_filenames: false
+
+      - id: parser_flake8
+        name: parser flake8
+        entry: bash -c "cd tlparser && poetry run flake8 ."
+        language: system
+        types: [python]
+        pass_filenames: false
+
+      - id: parser_mypy
+        name: parser mypy
+        entry: bash -c "cd tlparser && poetry run mypy ."
+        language: system
+        types: [python]
+        pass_filenames: false
+
+      - id: parser_ut
+        name: parser unit tests
+        entry: bash -c "cd tlparser && poetry run pytest tests/unit/"
+        language: system
+        types: [python]
+        pass_filenames: false
+
+      - id: caller_isort
+        name: caller isort
+        entry: bash -c "cd caller && poetry run isort --check-only ."
+        language: system
+        types: [python]
+        pass_filenames: false
+
+      - id: caller_black
+        name: caller black
+        entry: bash -c "cd caller && poetry run black --check ."
+        language: system
+        types: [python]
+        pass_filenames: false
+
+      - id: caller_flake8
+        name: caller flake8
+        entry: bash -c "cd caller && poetry run flake8 ."
+        language: system
+        types: [python]
+        pass_filenames: false
+
+      - id: caller_mypy
+        name: caller mypy
+        entry: bash -c "cd caller && poetry run mypy ."
+        language: system
+        types: [python]
+        pass_filenames: false
+
+      - id: parser_it
+        name: parser_it
+        entry: make parser_it
+        language: system
+        types: [python]
+        pass_filenames: false
+
+      - id: caller_it
+        name: caller_it
+        entry: make caller_it
+        language: system
+        types: [python]
+        pass_filenames: false
+
+      - id: parser_component
+        name: parser_component
+        entry: make parser_component
+        language: system
+        types: [python]
+        pass_filenames: false
+
+      # - id: e2e_tests
+      #   name: e2e tests
+      #   entry: make e2e
+      #   language: system
+      #   types: [python]
+      #   pass_filenames: false
